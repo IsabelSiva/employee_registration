@@ -8,6 +8,7 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         int employeeNumber;
 
+
         System.out.println("Quantos funcionários deseja cadastrar?");
         employeeNumber = sc.nextInt();
 
@@ -25,6 +26,21 @@ public class Application {
             employeeNumber--;
         }
 
-        for (Employee e : employees) System.out.println(e);
+        System.out.println("------------------------------------------------------");
+        System.out.println("Digite o ID do funcionário que deseja efetuar aumento");
+        int idToFind = sc.nextInt();
+
+        for (Employee e : employees){
+
+            if (e.getId() == idToFind){
+                System.out.println("digite a porcentagem do aumento");
+                double aumento = sc.nextDouble();
+                e.increaseSalary(aumento);
+                System.out.println(e);
+
+            }
+        }
+
+       // for (Employee e : filterId) System.out.println(e);
     }
 }

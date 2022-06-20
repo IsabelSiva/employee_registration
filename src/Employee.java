@@ -29,7 +29,7 @@ public class Employee {
         return salary;
     }
 
-    private void increaseSalary(double percentage){
+    public void increaseSalary(double percentage){
         salary = salary * percentage + salary;
     }
 
