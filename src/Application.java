@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args){
@@ -9,44 +8,26 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         int employeeNumber;
 
-
-        System.out.println("Quantos funcionários deseja cadastrar?");
+        System.out.println("DIGITE O NÚMERO DE FUNCIONÁRIOS.");
         employeeNumber = sc.nextInt();
-
-        while (employeeNumber != 0){
-            System.out.println("Digite o ID do funcionário");
+        
+        for (int i = 0; i < employeeNumber ; i++) {
+            System.out.println("DIGITE O Id DO FUNCIONARIO");
             int id = sc.nextInt();
-            System.out.println("Entre com o nome do funcionário");
+            System.out.println("DIGITE O NOME DO FUNCIONARIO");
             sc.nextLine();
             String name = sc.nextLine();
-            System.out.println("Entre com o salário do empregado");
-            double salario = sc.nextDouble();
-
-            employees.add(new Employee(id, name, salario));
-
-            employeeNumber--;
+            System.out.println("ENTRE COM O SALARIO DO FUNCIONARIO");
+            double salary = sc.nextDouble();
+            employees.add( new Employee(id, name, salary));
         }
+        int idToIncrease;
+        System.out.println("DIGITE O id DO FUNCIONARIO QUE DESEJA AUMENTAR O SALARIO");
+        idToIncrease = sc.nextInt();
+        Employee employee1 = (Employee) employees.stream().filter(x -> x.getId() == idToIncrease).toList();
 
-        System.out.println("------------------------------------------------------");
-        System.out.println("Digite o ID do funcionário que deseja efetuar aumento");
-        int idToFind = sc.nextInt();
+        for (Employee e: employees){System.out.println(e);}
+        System.out.println(employee1);
 
-//        for (Employee e : employees){
-//
-//            if (e.getId() == idToFind){
-//                System.out.println("digite a porcentagem do aumento");
-//                double aumento = sc.nextDouble();
-//                e.increaseSalary(aumento);
-//                System.out.println(e);
-//
-//            }else System.out.println("usuário não encontrado");
-//
-//            System.out.println("Lista de Funcionários:\n" + e);
-//
-//        }
-        Employee emp = employees.stream().filter(x -> x.getId() == idToFind).findFirst().orElse(null);
-
-        System.out.println("Lista de Funcionários:\n" + emp);
-       // for (Employee e : filterId) System.out.println(e);
     }
 }
