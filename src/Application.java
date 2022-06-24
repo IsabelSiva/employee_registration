@@ -24,10 +24,18 @@ public class Application {
         int idToIncrease;
         System.out.println("DIGITE O id DO FUNCIONARIO QUE DESEJA AUMENTAR O SALARIO");
         idToIncrease = sc.nextInt();
-        Employee employee1 = (Employee) employees.stream().filter(x -> x.getId() == idToIncrease).toList();
+        Employee employee1 = employees.stream().filter(x -> x.getId() == idToIncrease).findFirst().orElse(null);
 
-        for (Employee e: employees){System.out.println(e);}
-        System.out.println(employee1);
+        if (employee1 == null){System.out.println("O funcionário não exite");}
+        else{
+            System.out.println("Digite a percentagem do aumento");
+            double percentage = sc.nextDouble();
+            employee1.increaseSalary(percentage);
+        }
+
+        for (Employee e: employees){
+            System.out.println(e);}
+        //System.out.println(employee1);
 
     }
 }
